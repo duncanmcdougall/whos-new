@@ -1,0 +1,122 @@
+.color--red { background: #e51c23; }
+.color--pink { background: #e91e63; }
+.color--purple { background: #9c27b0; }
+.color--deeppurple { background: #673ab7; }
+.color--indigo { background: #3f51b5; }
+.color--blue { background: #5677fc; }
+.color--lightblue { background: #03a9f4; }
+.color--cyan { background: #00bcd4; }
+.color--teal { background: #009688; }
+.color--green { background: #009688; }
+.color--lightgreen { background: #8bc34a; }
+.color--lime { background: #cddc39; }
+.color--yellow { background: #ffeb3b; }
+.color--amber { background: #ffc107; }
+.color--orange { background: #ff9800; }
+.color--deeporange { background: #ff5722; }
+
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+body {
+    margin-top: 40px;
+    font-family: Roboto, sans-serif;
+}
+
+.item {
+    width: 33.33333%;
+    float: left;
+    padding-bottom: 33.3333333%;
+    color: white;
+    text-align: center;
+    position: relative;
+    font-size: 32px;
+}
+
+.item i {
+    position: absolute;
+    top: 50%;
+    margin-top: -16px;
+    margin-left: -16px;
+    text-shadow: 0 0 15px rgba(0,0,0,0.3);
+}
+
+.item:active {
+    background: black;
+}
+
+header {
+    height: 40px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    background: white;
+    box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.2);
+    
+    color: #009688;
+    line-height: 40px;
+    font-size: 18px;
+    font-weight: 500;
+    
+    text-align: center;
+}
+
+.header__time {
+    
+}
+
+.header__progress {
+    position: absolute;
+    left: 15px;
+    text-align: left;
+    top: 0;
+    font-size: 16px;
+    opacity: 0.9;
+}
+
+.started .start {
+    display: none;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,0.9);
+}
+
+.btn {
+    display: block;
+    text-align: center;
+    position: relative;
+    height: 50px;
+    width: 180px;
+    line-height: 50px;
+    border-radius: 2px;
+    font-size: 0.9em;
+    background-color: #fff;
+    color: #646464;
+    text-transform: uppercase;
+    text-decoration: none;
+    padding: 0 40px;
+    font-weight: 500;
+    font-size: 18px;
+    
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    
+    margin-left: -90px;
+    margin-top: -25px;
+    
+    transition: box-shadow 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0.2s;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
