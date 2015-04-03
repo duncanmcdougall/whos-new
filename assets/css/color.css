@@ -47,7 +47,7 @@ body {
 }
 
 .item:active {
-    background: black;
+    /*background: black; */
 }
 
 header {

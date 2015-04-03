@@ -86,6 +86,7 @@ app.controller('GameCtrl', ['$scope', '$interval', function ($scope, $interval) 
             $scope.items = $scope.generatePack();
         }else{
             console.log("WRONG");
+            item.wrong = true;
         }
     };
     
@@ -132,7 +133,8 @@ app.controller('GameCtrl', ['$scope', '$interval', function ($scope, $interval) 
         }else{
             items.push({
                 icon: types[$scope.step],
-                isNew: true
+                isNew: true,
+                wrong: false
             });   
         }
         
@@ -146,7 +148,8 @@ app.controller('GameCtrl', ['$scope', '$interval', function ($scope, $interval) 
 
             items.push({
                 icon: types[falseyIdx],
-                isNew: false
+                isNew: false,
+                wrong: false
             });
         }
         

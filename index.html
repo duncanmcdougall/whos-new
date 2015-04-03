@@ -15,8 +15,8 @@
 </head>
 <body ng-controller="GameCtrl" ng-class="{ started : started }">
     <ul class="items" >
-        <li class="color--{{item.color}} item item--{{item.icon}}" ng-repeat="item in items" ng-click="chance(item)">
-            <i class="fa fa-{{item.icon}}"></i>
+        <li class="color--{{item.color}} item item--{{item.icon}}" ng-repeat="item in items" ng-click="chance(item)" >
+            <i class="fa fa-{{item.icon}}" ng-class="{'animated shake' : item.wrong }"></i>
         </li>
     </ul>
     <header>
