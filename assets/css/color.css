@@ -7,13 +7,14 @@
 .color--lightblue { background: #03a9f4; }
 .color--cyan { background: #00bcd4; }
 .color--teal { background: #009688; }
-.color--green { background: #009688; }
+.color--green { background: #4CAF50; }
 .color--lightgreen { background: #8bc34a; }
 .color--lime { background: #cddc39; }
 .color--yellow { background: #ffeb3b; }
 .color--amber { background: #ffc107; }
 .color--orange { background: #ff9800; }
 .color--deeporange { background: #ff5722; }
+.color--brown { background: #795548; }
 
 html {
   box-sizing: border-box;
@@ -34,14 +35,14 @@ body {
     color: white;
     text-align: center;
     position: relative;
-    font-size: 32px;
+    font-size: 60px;
 }
 
 .item i {
     position: absolute;
     top: 50%;
-    margin-top: -16px;
-    margin-left: -16px;
+    margin-top: -30px;
+    margin-left: -30px;
     text-shadow: 0 0 15px rgba(0,0,0,0.3);
 }
 
@@ -60,7 +61,7 @@ header {
     
     color: #009688;
     line-height: 40px;
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 500;
     
     text-align: center;
@@ -70,13 +71,28 @@ header {
     
 }
 
-.header__progress {
+.header__time--poor {
+    color: #990135;
+}
+
+
+.header__progress,
+.header__highscore {
     position: absolute;
-    left: 15px;
-    text-align: left;
     top: 0;
     font-size: 16px;
     opacity: 0.9;
+}
+
+.header__progress {
+    left: 15px;
+    text-align: left;
+}
+
+.header__highscore {
+    text-align: right;
+    right: 15px;
+    color: #ff5722;
 }
 
 .started .start {
@@ -127,11 +143,52 @@ header {
     font-size: 48px;
     position: fixed;
     top: 50%;
-    margin-top: -24px;
-    margin-left: -15px;
+    margin-top: -40px;
+    margin-left: -40px;
     left: 50%;
+    
+    display: inline-block;
+    background: rgba(0,0,0,0.7);
+    width: 80px;
+    text-align: center;
+    height: 80px;
+    line-height: 80px;
+    border-radius: 100px;
 }
 
 .hidden {
     display: none !important;
+}
+
+.pressure {
+	-webkit-animation: pulse1 1s linear infinite;
+	-moz-animation: pulse1 1s linear infinite;
+	-ms-animation: pulse1 1s linear infinite;
+	animation: pulse1 1s linear infinite;
+}
+
+@keyframes "pulse1" {
+ 0% {
+    transform: scale(1);
+ }
+ 90% {
+    transform: scale(1.4);
+ }
+ 100% {
+    transform: scale(1);
+ }
+
+}
+
+@-webkit-keyframes "pulse1" {
+ 0% {
+    transform: scale(1);
+ }
+ 90% {
+    transform: scale(1.4);
+ }
+ 100% {
+    transform: scale(1);
+ }
+
 }

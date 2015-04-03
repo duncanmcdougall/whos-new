@@ -16,7 +16,8 @@ var colors = [
     'yellow',
     'amber',
     'orange',
-    'deeporange'
+    'deeporange',
+    'brown'
 ];
 
 var types = [
@@ -24,7 +25,7 @@ var types = [
     'motorcycle',
     'diamond',
     'coffee',
-    'female',
+    'smile-o',
     'flash',
     'send',
     'soccer-ball-o',
@@ -32,15 +33,30 @@ var types = [
     'tree',
     'umbrella',
     'thumbs-up',
-    'rocket',
+    'bell',
     'wheelchair',
-    'fighter-jet',
-    'euro',
+    'plane',
+    'money',
+    'wifi',
+    'trophy',
+    'child',
+    'camera',
+    'heart',
     'apple',
     'android',
-    'pinterest',
     'twitter',
-    'heart'
+    'ambulance',
+    'ship',
+    'anchor',
+    'binoculars',
+    'briefcase',
+    'bomb',
+    'bug',
+    'volume-up',
+    'bullhorn',
+    'eye',
+    'wrench',
+    'dollar'
 ];
 
 app.controller('GameCtrl', ['$scope', '$interval', function ($scope, $interval) {
@@ -51,18 +67,20 @@ app.controller('GameCtrl', ['$scope', '$interval', function ($scope, $interval) 
     $scope.started = false;
     var timerInterval;
     $scope.countdown = 3;
-
+    $scope.highscore = 28.6;
+    
     $scope.chance = function(item) {
         if(item.isNew) {   
             if($scope.step == $scope.totalSteps) {
                $interval.cancel(timerInterval);
                 //$window.alert("DONE!!!");
                 $scope.items = [];
-                
+                if($scope.time < $scope.highscore) {
+                    $scope.highscore = $scope.time;   
+                }
                 return;
             }
             
-            $('.header__progress').addClass('animated pulse');
             $scope.step++;
             console.log("CORRECT");
             $scope.items = $scope.generatePack();
