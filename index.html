@@ -15,7 +15,7 @@
 </head>
 <body ng-controller="GameCtrl" ng-class="{ started : started }">
     <ul class="items" >
-        <li class="color--{{item.color}} item item--{{item.icon}}" ng-repeat="item in items" ng-click="chance()">
+        <li class="color--{{item.color}} item item--{{item.icon}}" ng-repeat="item in items" ng-click="chance(item)">
             <i class="fa fa-{{item.icon}}"></i>
         </li>
     </ul>
@@ -25,7 +25,11 @@
     </header>
     
     <div class="overlay start">
-        <a href="#" class="btn" ng-click="start()" >Start</a>
+        <a href="#" class="btn" ng-click="getReady()" >Start</a>
+    </div>
+    
+    <div class="countdown" ng-class="{ hidden : countdown < 1 || !started }">
+        {{countdown}}
     </div>
     
     <script src="app/controllers.js"></script>

@@ -120,3 +120,18 @@ header {
     transition-delay: 0.2s;
     box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
 }
+
+.countdown {
+    color: white;
+    text-shadow: 0 0 2px black;
+    font-size: 48px;
+    position: fixed;
+    top: 50%;
+    margin-top: -24px;
+    margin-left: -15px;
+    left: 50%;
+}
+
+.hidden {
+    display: none !important;
+}
