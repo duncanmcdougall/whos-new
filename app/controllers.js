@@ -46,7 +46,7 @@ var types = [
 app.controller('GameCtrl', ['$scope', '$interval', function ($scope, $interval) {
     $scope.items = [];
     $scope.totalSteps = 15;
-    $scope.step = 1;
+    $scope.step = 0;
     $scope.time = 0;
     $scope.started = false;
     var timerInterval;
@@ -54,11 +54,20 @@ app.controller('GameCtrl', ['$scope', '$interval', function ($scope, $interval) 
 
     $scope.chance = function(item) {
         if(item.isNew) {   
+            if($scope.step == $scope.totalSteps) {
+               $interval.cancel(timerInterval);
+                //$window.alert("DONE!!!");
+                $scope.items = [];
+                
+                return;
+            }
+            
             $('.header__progress').addClass('animated pulse');
             $scope.step++;
             console.log("CORRECT");
+            $scope.items = $scope.generatePack();
         }else{
-            console.log("WRONG");   
+            console.log("WRONG");
         }
     };
     
@@ -68,13 +77,14 @@ app.controller('GameCtrl', ['$scope', '$interval', function ($scope, $interval) 
         $scope.started = false;
         $scope.time = 0;
         $interval.cancel(timerInterval);
+        shuffle(colors);
     };
     
     
     var readyInterval;
     
     $scope.getReady = function() {
-        $scope.items = generatePack(0);
+        $scope.items = $scope.generatePack();
         $scope.started = true;
         readyInterval = $interval(function() {
              $scope.countdown--;
@@ -87,14 +97,50 @@ app.controller('GameCtrl', ['$scope', '$interval', function ($scope, $interval) 
     
     $scope.start = function() {
         $scope.step = 1;
-        $scope.items = generatePack(1);
+        $scope.items = $scope.generatePack();
 
         timerInterval = $interval(function() {
             $scope.time += 0.1;
         }, 100);
     };
     
-    $
+    $scope.generatePack = function() {
+        
+
+        var items = [];
+
+        if($scope.step == 0) {
+            falseLimit = $scope.totalSteps;
+        }else{
+            items.push({
+                icon: types[$scope.step],
+                isNew: true
+            });   
+        }
+        
+        var i;
+        for(i = 0; items.length < $scope.totalSteps; i++) 
+        {
+            var falseyIdx = 0;
+            if($scope.step > 1) {
+                falseyIdx = _.random($scope.step-1);
+            }
+
+            items.push({
+                icon: types[falseyIdx],
+                isNew: false
+            });
+        }
+        
+        items.forEach(function(el, idx) {
+            el.color = colors[idx];
+        });
+
+        items = shuffle(items);
+
+        return items;
+
+    };
     
     $scope.reset();
 }]);
@@ -110,36 +156,6 @@ app.filter('numberFixedLen', function () {
     };
 });
 
-function generatePack(step) {
-    var i = 0;
-    
-    var items = [];
-    
-    falsesToShow = 15 - step;
-    
-    for(i; i < falsesToShow; i++) 
-    {
-        items.push({
-            color: colors[_.random(colors.length-1)],
-            icon: types[0],
-            isNew: false
-        });
-    }
-    
-    var t = 0;
-    for(t; t < step; t++) {
-        items.push({
-            color: colors[_.random(colors.length-1)],
-            icon: types[step],
-            isNew: true
-        });
-    }
-    
-    items = shuffle(items);
-    
-    return items;
-
-};
 
 function shuffle(array) {
   var currentIndex = array.length, temporaryValue, randomIndex ;
