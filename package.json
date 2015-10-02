@@ -1,0 +1,28 @@
+{
+  "name": "whats-new",
+  "version": "1.0.0",
+  "description": "A mobile game where the goal is to find what item is new as fast as possible.",
+  "main": "gulpfile.js",
+  "dependencies": {
+    "bower": "^1.5.3",
+    "gulp": "^3.9.0",
+    "gulp-less": "^3.0.3",
+    "gulp-path": "^2.0.2"
+  },
+  "devDependencies": {
+    "gulp-watch": "^4.3.5"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/duncanmcdougall/whats-new.git"
+  },
+  "author": "Duncan McDougall",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/duncanmcdougall/whats-new/issues"
+  },
+  "homepage": "https://github.com/duncanmcdougall/whats-new#readme"
+}
