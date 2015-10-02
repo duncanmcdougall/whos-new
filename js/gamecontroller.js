@@ -6,7 +6,7 @@ app.controller('CountdownController', function ($scope, $interval, $timeout, $st
             $scope.countdown = "GO!"
             $timeout(function() {
                 $state.go('game')
-            }, 700);
+            }, 1000);
             $interval.cancel(readyInterval);
         }
     }, 900);
