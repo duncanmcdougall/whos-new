@@ -1,38 +1,23 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
+
 <head>
     <meta charset="UTF-8">
-      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-    <title>Document</title>
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.css">
-    <link rel="stylesheet" href="assets/css/color.css">
-    <link rel="stylesheet" href="http:////cdnjs.cloudflare.com/ajax/libs/animate.css/3.2.6/animate.min.css">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular.js/1.3.15/angular.min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.8.3/underscore-min.js"></script>
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/0.2.13/angular-ui-router.min.js"></script>
-    <link rel="stylesheet" href="http://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
-    <script src="http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>What's New?</title>
+    <link rel="stylesheet" href="css/app.css">
+    <script src="bower_components/angular/angular.min.js"></script>
+    <script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
 </head>
-<body ng-controller="GameCtrl" ng-class="{ started : started }">
-    <ul class="items" >
-        <li class="color--{{item.color}} item item--{{item.icon}}" ng-repeat="item in items" ng-click="chance(item)" >
-            <i class="fa fa-{{item.icon}}" ng-class="{'animated shake' : item.wrong }"></i>
-        </li>
-    </ul>
-    <header>
-        <span class="header__progress">{{step}}/{{totalSteps}}</span>
-        <span class="header__time" ng-class="{ 'header__time--poor' : highscore < time }">{{time | numberFixedLen:1 }}s</span>
-        <span class="header__highscore"><i class="fa fa-trophy"></i> {{highscore | numberFixedLen:1 }}s</span>
-    </header>
-    
-    <div class="overlay start">
-        <a href="#" class="btn" ng-click="getReady()" >Start</a>
-    </div>
-    
-    <div class="countdown" ng-class="{ hidden : countdown < 1 || !started }">
-        {{countdown}}
-    </div>
-    
-    <script src="app/controllers.js"></script>
+
+<body>
+
+    <div ui-view></div>
+    <script src="js/app.js"></script>
+    <script src="js/filters.js"></script>
+    <script src="js/gamecontroller.js"></script>
+</div>
+
 </body>
+
 </html>

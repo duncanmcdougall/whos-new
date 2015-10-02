@@ -1,0 +1,63 @@
+html {
+    background: #444;
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    color: white;
+    font-family: 'reef';
+    text-align: center;
+    font-size: 10px;
+    width: 320px;
+    height: 540px;
+    margin: 50px auto;
+    background-color: #f1c40f;
+    -webkit-animation: color 20s ease-in 0s infinite alternate running;
+    animation: color 60s linear 0s infinite alternate running;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@green: #4DD1BC;
+@pink: #F94B80;
+@peach: #F88884;
+@yellow: #FDC685;
+@-webkit-keyframes color {
+    0% {
+        background-color: @green;
+    }
+    25% {
+        background-color: @pink;
+    }
+    50% {
+        background-color: @peach;
+    }
+    75% {
+        background-color: @yellow;
+    }
+    100% {
+        background-color: #E2EAAF;
+    }
+}
+
+@keyframes color {
+    0% {
+        background-color: @green;
+    }
+    25% {
+        background-color: @pink;
+    }
+    50% {
+        background-color: @peach;
+    }
+    75% {
+        background-color: @yellow;
+    }
+    100% {
+        background-color: #E2EAAF;
+    }
+}

@@ -1,65 +1,22 @@
-var app = angular.module('app', []);
+app.controller('CountdownController', function ($scope, $interval, $timeout, $state) {
+    $scope.countdown = 3;
+    var readyInterval = $interval(function() {
+         $scope.countdown--;
+        if($scope.countdown == 0) {
+            $scope.countdown = "GO!"
+            $timeout(function() {
+                $state.go('game')
+            }, 700);
+            $interval.cancel(readyInterval);
+        }
+    }, 900);
+});
 
-var colors = [
-    'red',
-    'pink',
-    'purple',
-    'deeppurple',
-    'indigo',
-    'blue',
-    'lightblue',
-    'cyan',
-    'teal',
-    'green',
-    'lightgreen',
-    'lime',
-    'yellow',
-    'amber',
-    'orange',
-    'deeporange',
-    'brown'
-];
+app.controller('GameController', function ($scope, $interval, $timeout, $state) {
+    
+});
 
-var types = [
-    'car',
-    'motorcycle',
-    'diamond',
-    'coffee',
-    'smile-o',
-    'flash',
-    'send',
-    'soccer-ball-o',
-    'star',
-    'tree',
-    'umbrella',
-    'thumbs-up',
-    'bell',
-    'wheelchair',
-    'plane',
-    'money',
-    'wifi',
-    'trophy',
-    'child',
-    'camera',
-    'heart',
-    'apple',
-    'android',
-    'twitter',
-    'ambulance',
-    'ship',
-    'anchor',
-    'binoculars',
-    'briefcase',
-    'bomb',
-    'bug',
-    'volume-up',
-    'bullhorn',
-    'eye',
-    'wrench',
-    'dollar'
-];
-
-app.controller('GameCtrl', ['$scope', '$interval', function ($scope, $interval) {
+/*app.controller('GameCtrl', ['$scope', '$interval', function ($scope, $interval) {
     $scope.items = [];
     $scope.totalSteps = 15;
     $scope.step = 0;
@@ -164,35 +121,4 @@ app.controller('GameCtrl', ['$scope', '$interval', function ($scope, $interval) 
     };
     
     $scope.reset();
-}]);
-
-app.filter('numberFixedLen', function () {
-    return function (n, len) {
-        var num = parseFloat(n);
-        len = parseInt(len, 10);
-        if (isNaN(num) || isNaN(len)) {
-            return n;
-        }
-        return num.toFixed(len);
-    };
-});
-
-
-function shuffle(array) {
-  var currentIndex = array.length, temporaryValue, randomIndex ;
-
-  // While there remain elements to shuffle...
-  while (0 !== currentIndex) {
-
-    // Pick a remaining element...
-    randomIndex = Math.floor(Math.random() * currentIndex);
-    currentIndex -= 1;
-
-    // And swap it with the current element.
-    temporaryValue = array[currentIndex];
-    array[currentIndex] = array[randomIndex];
-    array[randomIndex] = temporaryValue;
-  }
-
-  return array;
-}
+}]); */
