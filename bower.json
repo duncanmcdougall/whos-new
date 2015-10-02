@@ -26,5 +26,8 @@
     "underscore": "~1.8.3",
     "reset-css": "~2.0.2011012602",
     "lesshat": "~3.0.2"
+  },
+  "devDependencies": {
+    "randomcolor": "~0.4.0"
   }
 }
