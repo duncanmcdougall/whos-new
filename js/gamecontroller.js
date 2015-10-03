@@ -1,18 +1,63 @@
-app.controller('CountdownController', function ($scope, $interval, $timeout, $state) {
-    $scope.countdown = 3;
-    var readyInterval = $interval(function () {
-        $scope.countdown--;
-        if ($scope.countdown == 0) {
-            $scope.countdown = "GO!"
-            $timeout(function () {
-                $state.go('game')
-            }, 1000);
-            $interval.cancel(readyInterval);
-        }
-    }, 900);
-});
+var colors = [
+    'red',
+    'pink',
+    'purple',
+    'deeppurple',
+    'indigo',
+    'blue',
+    'lightblue',
+    'cyan',
+    'teal',
+    'green',
+    'lightgreen',
+    'lime',
+    'yellow',
+    'amber',
+    'orange',
+    'deeporange',
+    'brown'
+];
 
-app.controller('GameController', function ($scope, $interval, $timeout, $state) {
+var types = [
+    'car',
+    'motorcycle',
+    'diamond',
+    'coffee',
+    'smile-o',
+    'flash',
+    'send',
+    'soccer-ball-o',
+    'star',
+    'tree',
+    'umbrella',
+    'thumbs-up',
+    'bell',
+    'wheelchair',
+    'plane',
+    'money',
+    'wifi',
+    'trophy',
+    'child',
+    'camera',
+    'heart',
+    'apple',
+    'android',
+    'twitter',
+    'ambulance',
+    'ship',
+    'anchor',
+    'binoculars',
+    'briefcase',
+    'bomb',
+    'bug',
+    'volume-up',
+    'bullhorn',
+    'eye',
+    'wrench',
+    'dollar'
+];
+
+app.controller('GameController', function ($scope, $interval, $timeout, $state, HighscoreService) {
 
     $scope.generatePack = function () {
         var items = [];
@@ -47,13 +92,14 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state) 
 
         return items;
     };
-
+    
+    $scope.highscore = HighscoreService.getHighscore();
     $scope.totalSteps = 9;
     $scope.step = 1;
     $scope.time = 0;
     $scope.started = false;
     $scope.countdown = 3;
-    $scope.highscore = 28.6;
+    
     $scope.items = $scope.generatePack();
     $scope.color = randomColor();
     $scope.done = false;
@@ -69,8 +115,9 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state) 
                 $interval.cancel(timerInterval);
                 //$window.alert("DONE!!!");
                 $scope.items = [];
-                if ($scope.time < $scope.highscore) {
+                if ($scope.highscore == null || $scope.time < $scope.highscore) {
                     $scope.highscore = $scope.time;
+                    HighscoreService.setHighscore($scope.time);
                 }
                 $scope.done = true;
                 return;
@@ -109,31 +156,3 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state) 
 
 
 });
-
-/*app.controller('GameCtrl', ['$scope', '$interval', function ($scope, $interval) {
-    
-    
-    
-    
-    $scope.reset = function() {
-        
-        $scope.step = 0;
-        $scope.started = false;
-        $scope.time = 0;
-        $interval.cancel(timerInterval);
-        
-    };
-    
-    $scope.start = function() {
-        $scope.step = 1;
-        $scope.items = $scope.generatePack();
-
-        timerInterval = $interval(function() {
-            $scope.time += 0.1;
-        }, 100);
-    };
-    
-    
-    
-    $scope.reset();
-}]); */
