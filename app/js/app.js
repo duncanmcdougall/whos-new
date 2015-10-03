@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router', 'LocalStorageModule']);
+var app = angular.module('app', ['ui.router', 'LocalStorageModule', 'ngTouch']);
 
 
 app.config(function ($stateProvider, $urlRouterProvider, localStorageServiceProvider) {

@@ -10,7 +10,11 @@
     "gulp-path": "^2.0.2"
   },
   "devDependencies": {
-    "gulp-watch": "^4.3.5"
+    "gulp-autoprefixer": "^3.0.2",
+    "gulp-clean": "^0.3.1",
+    "gulp-connect": "^2.2.0",
+    "gulp-watch": "^4.3.5",
+    "yargs": "^3.26.0"
   },
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"

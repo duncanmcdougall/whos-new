@@ -18,7 +18,6 @@
     "tests"
   ],
   "dependencies": {
-    "jquery": "~2.1.4",
     "angular": "~1.4.7",
     "animate.css": "~3.4.0",
     "angular-ui-router": "~0.2.15",
@@ -26,7 +25,8 @@
     "underscore": "~1.8.3",
     "reset-css": "~2.0.2011012602",
     "lesshat": "~3.0.2",
-    "angular-local-storage": "~0.2.2"
+    "angular-local-storage": "~0.2.2",
+    "angular-touch": "~1.4.7"
   },
   "devDependencies": {
     "randomcolor": "~0.4.0"

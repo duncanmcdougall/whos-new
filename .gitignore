@@ -29,3 +29,5 @@ bower_components
 
 .divshot-cache
 divshot.json
+
+app/css/app.css
