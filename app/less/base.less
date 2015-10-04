@@ -18,37 +18,38 @@ html {
     height: 100%;
 }
 
+@green: #4DD1BC;
+@pink: #F94B80;
+@peach: #F88884;
+@yellow: #FDC685;
+@keyframes color {
+    0% {
+        background: @green;
+    }
+    25% {
+        background: @pink;
+    }
+    50% {
+        background: @peach;
+    }
+    75% {
+        background: @yellow;
+    }
+    100% {
+        background: #E2EAAF;
+    }
+}
+
 body {
     color: white;
     font-family: 'reef';
     text-align: center;
     font-size: 10px;
-    background-color: #f1c40f;
-    animation: color 60s linear 0s infinite alternate running;
+    animation-duration: 60s;
+    animation-name: color;
+    animation-iteration-count: infinite;
+    animation-direction: alternate;
     text-shadow: 3px 3px rgba(0, 0, 0, 0.1);
-}
-
-@green: #4DD1BC;
-@pink: #F94B80;
-@peach: #F88884;
-@yellow: #FDC685;
-
-@keyframes color {
-    0% {
-        background-color: @green;
-    }
-    25% {
-        background-color: @pink;
-    }
-    50% {
-        background-color: @peach;
-    }
-    75% {
-        background-color: @yellow;
-    }
-    100% {
-        background-color: #E2EAAF;
-    }
 }
 
 .btn {
@@ -59,7 +60,6 @@ body {
     display: inline-block;
     position: relative;
     transition: all 0.2s ease-in-out;
-
     &:hover {
         //transform: scale(1.6) rotate(-4deg);
     }
