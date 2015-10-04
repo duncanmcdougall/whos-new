@@ -16,14 +16,14 @@ app.config(function ($stateProvider, $urlRouterProvider, localStorageServiceProv
     $stateProvider
         .state('home', {
             url: "/",
-            templateUrl: "templates/home.html"
+            templateUrl: "assets/templates/home.html"
         })
         .state('countdown', {
-            templateUrl: 'templates/countdown.html',
+            templateUrl: 'assets/templates/countdown.html',
             controller: 'CountdownController'
         })
         .state('game', {
-            templateUrl: 'templates/game.html',
+            templateUrl: 'assets/templates/game.html',
             controller: 'GameController'
         });
 });

@@ -1,23 +1,3 @@
-var colors = [
-    'red',
-    'pink',
-    'purple',
-    'deeppurple',
-    'indigo',
-    'blue',
-    'lightblue',
-    'cyan',
-    'teal',
-    'green',
-    'lightgreen',
-    'lime',
-    'yellow',
-    'amber',
-    'orange',
-    'deeporange',
-    'brown'
-];
-
 var types = [
     'car',
     'motorcycle',
@@ -113,7 +93,6 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
         if (item.isNew) {
             if ($scope.step == $scope.totalSteps) {
                 $interval.cancel(timerInterval);
-                //$window.alert("DONE!!!");
                 $scope.items = [];
                 if ($scope.highscore == null || $scope.time < $scope.highscore) {
                     $scope.highscore = $scope.time;
