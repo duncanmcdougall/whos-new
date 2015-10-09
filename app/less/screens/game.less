@@ -1,16 +1,31 @@
+@keyframes warning {
+    0% {
+        color: @green;
+    }
+    60% {
+        color: @green;
+    }
+    85% {
+        color: #FF8000;
+    }
+    100% {
+        color: #CC2323;
+    }
+}
+
 .game {
     height: 100%;
     display: flex;
     flex-flow: column wrap;
-    background: #333;
-    color: white;
+    background: white;
+    color: black;
+    
     .header {
         flex: 0 0 40px;
         line-height: 40px;
         font-size: 2rem;
         text-shadow: none;
     }
-    .header__time--poor {}
     .header__progress,
     .header__highscore {
         position: absolute;
@@ -22,9 +37,14 @@
         left: 15px;
         text-align: left;
     }
+    .header__time {
+         animation: 10s warning;  
+         color: #CC2323;
+    }
     .header__highscore {
         text-align: right;
         right: 15px;
+        color: #FF8000;
     }
     .items {
         font-size: 0;
@@ -45,5 +65,9 @@
         padding: 4px;
         margin: 5px;
         box-shadow: 3px 3px rgba(0, 0, 0, 0.1);
+        
+        &.wrong {
+            background: #aaa !important;   
+        }
     }
 }

@@ -22,7 +22,8 @@ html {
 @pink: #F94B80;
 @peach: #F88884;
 @yellow: #FDC685;
-@keyframes color {
+
+@keyframes background {
     0% {
         background: @green;
     }
@@ -41,15 +42,12 @@ html {
 }
 
 body {
-    color: white;
     font-family: 'reef';
     text-align: center;
     font-size: 10px;
-    animation-duration: 60s;
-    animation-name: color;
-    animation-iteration-count: infinite;
-    animation-direction: alternate;
+    animation: 60s background infinite alternate;
     text-shadow: 3px 3px rgba(0, 0, 0, 0.1);
+    color: white;
 }
 
 .btn {
@@ -61,6 +59,7 @@ body {
     position: relative;
     transition: all 0.2s ease-in-out;
     &:hover {
-        //transform: scale(1.6) rotate(-4deg);
+        transform: scale(1.6) rotate(-4deg);
+        transform-origin: center center;
     }
 }

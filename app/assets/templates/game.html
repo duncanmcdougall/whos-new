@@ -1,11 +1,11 @@
 <div class="game">
     <header class="header">
-        <span class="header__progress">{{step}}/{{totalSteps}}</span>
-        <span class="header__time" ng-class="{ 'header__time--poor' : highscore < time }">{{time | numberFixedLen:1 }}s</span>
-        <span class="header__highscore"><i class="fa fa-trophy"></i> {{highscore | numberFixedLen:1 }}s</span>
+        <span class="header__progress">{{level}}/{{totalLevels}}</span>
+        <span class="header__time">{{time | numberFixedLen:1 }}s</span>
+        <span class="header__highscore" ng-show="highscore !== null"><i class="fa fa-trophy"></i> {{highscore | numberFixedLen:1 }}s</span>
     </header>
     <ul class="items" ng-hide="done">
-        <li class="item" ng-class='{"new" : item.isNew}' ng-style="{'backgroundColor' : getColor(item)}" ng-repeat="item in items" ng-click="chance(item)" >
+        <li class="item" ng-class='{"new" : item.isNew, "wrong" : item.isWrong }' ng-repeat="item in items" ng-click="chance(item)" ng-style="{'background' : item.color}" >
             
         </li>
     </ul>
