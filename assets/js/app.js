@@ -8,7 +8,7 @@ app.config(function ($stateProvider, $urlRouterProvider, localStorageServiceProv
 
 
     localStorageServiceProvider
-        .setPrefix('dmgame');
+        .setPrefix('whatsnew');
 
 
     //
@@ -25,6 +25,11 @@ app.config(function ($stateProvider, $urlRouterProvider, localStorageServiceProv
         .state('game', {
             templateUrl: 'assets/templates/game.html',
             controller: 'GameController'
+        })
+        .state('complete', {
+            templateUrl: 'assets/templates/complete.html',
+            controller: 'CompleteController',
+            params: { time: null, isNewRecord: false }
         });
 });
 

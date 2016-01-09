@@ -1,75 +1,91 @@
 app.controller('GameController', function ($scope, $interval, $timeout, $state, HighscoreService) {
 
-    var allItems;
-    
+    var allItems, timerInterval;
+
     $scope.totalLevels = 12;
-    
+    $scope.record = HighscoreService.getHighscore();
+    $scope.level = 1;
+    $scope.time = 0;
+    $scope.started = false;
+    $scope.countdown = 3;
+    $scope.levels = [];
+
     var packs = [
         {
             name: 'food',
             items: 20
-        }, 
+        },
         {
             name: 'sea',
             items: 20
         }
     ];
-    
+
     var pack = packs[0];
 
-    
-    $scope.highscore = HighscoreService.getHighscore();
-    $scope.level = 1;
-    $scope.time = 0;
-    $scope.started = false;
-    $scope.countdown = 3;
-
-    var setupGame = function () {
-        allItems = [];
-        for (var j = 1; j <= pack.items; j++) {
-            allItems.push("/assets/icons/"+ pack.name + "/icon (" + j + ").png");
-        }
-        
-        $.preloadImages(allItems);
-        
-        allItems = _.shuffle(allItems);
+    var startTimer = function () {
+        timerInterval = $interval(function () {
+            $scope.time += 0.1;
+        }, 100);
     };
 
-    var timerInterval = $interval(function () {
-        $scope.time += 0.1;
-    }, 100);
-
-    var gameComplete = function () {
-        $interval.cancel(timerInterval);
-        if ($scope.highscore == null || $scope.time < $scope.highscore) {
-            $scope.highscore = $scope.time;
-            HighscoreService.setHighscore($scope.time);
-        }
-        $scope.done = true;
-    };
-
-    $scope.generateLevel = function () {
-        
+    var generateLevel = function () {
         var items = [];
-        
+
         items.push({
             src: allItems[$scope.level],
             isNew: true
         });
-        
+
         var wrongs = allItems.slice(0, $scope.level);
-        for(var i = 0; i < $scope.totalLevels-1;i++) {
-            var idx = _.random(0, $scope.level-1);
+        for (var i = 0; i < $scope.totalLevels - 1; i++) {
+            var idx = _.random(0, $scope.level - 1);
             items.push({
                 src: wrongs[idx],
                 isNew: false
             });
         }
-        
+
         items = _.shuffle(items);
-        
+
         return items;
     };
+
+    var setupGame = function () {
+        allItems = [];
+        for (var j = 1; j <= pack.items; j++) {
+            allItems.push("/assets/icons/" + pack.name + "/icon (" + j + ").png");
+        }
+
+        $.preloadImages(allItems);
+
+        allItems = _.shuffle(allItems);
+
+        for (var i = 1; i <= $scope.totalLevels; i++) {
+            $scope.levels.push(i);
+        }
+        
+        $scope.items = generateLevel();
+        startTimer();
+    };
+
+    var gameComplete = function () {
+        $interval.cancel(timerInterval);
+        var isNewRecord = false;
+        if ($scope.record == null || $scope.time < $scope.record) {
+            $scope.record = $scope.time;
+            newRecord = true;
+            HighscoreService.setHighscore($scope.time);
+        }
+        $state.go('complete', {
+            isNewRecord: isNewRecord,
+            time: $scope.time
+        });
+    };
+    
+    setupGame();
+    
+    /* EVENT HANDLERS */
 
     $scope.chance = function (item) {
         if (item.isNew) {
@@ -78,14 +94,17 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
                 return;
             }
             $scope.level++;
-            $scope.items = $scope.generateLevel();
+            $scope.items = generateLevel();
         } else {
             item.isWrong = true;
         }
     };
 
-    setupGame();
+    $scope.pause = function () {
+        $interval.cancel(timerInterval);
+    }
 
-    $scope.items = $scope.generateLevel();
-    $scope.done = false;
+    $scope.unpause = function () {
+        startTimer();
+    }
 });

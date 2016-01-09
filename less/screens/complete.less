@@ -1,0 +1,26 @@
+.complete {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    right: 0;
+    transform: translateY(-50%);
+    .time {
+        font-size: 6rem;
+        margin-bottom: 0.25em;
+    }
+    .record {
+        font-size: 3rem;
+        margin-bottom: 1em;
+        color: #ff9000;
+        span {
+            display: inline-block;
+            position: relative;
+            &:before {
+                position: absolute;
+                left: -1.1em;
+                font-family: FontAwesome;
+                content: "\f091";
+            }
+        }
+    }
+}

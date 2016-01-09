@@ -1,35 +1,35 @@
 .game {
     height: 100%;
     color: black;
-    
-    .header, .progress {
+    .header,
+    .progress {
         line-height: 40px;
     }
-    
     .header {
         line-height: 40px;
-       font-size: 2rem;
+        font-size: 3rem;
         text-shadow: none;
         background: #FF8000;
-        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        //box-shadow: 0 0 10px rgba(0,0,0,0.3);
         color: white;
     }
-    .header__progress,
+    .header__pause,
     .header__highscore {
         position: absolute;
         top: 0;
         opacity: 0.9;
     }
-    .header__progress {
-        left: 15px;
-        text-align: left;
+    .header__pause {
+        right: 15px;
+        text-align: right;
+        color: white;
     }
     .header__time {
-        font-size: 3rem;
     }
     .header__highscore {
-        text-align: right;
-        right: 15px;
+        text-align: left;
+        left: 15px;
+        font-size: 2.4rem;
     }
     .items {
         font-size: 0;
@@ -38,26 +38,23 @@
         transform: translateY(-50%);
         left: 0;
         right: 0;
-        
+        padding: 2vw;
     }
     .item {
         display: inline-block;
-        width: 15vh;
-        height: 15vh;
+        width: 28vw;
+        height: 28vw;
         position: relative;
         font-size: 60px;
         background: center center no-repeat;
         background-size: contain;
-        padding: 4px;
-        margin: 2vh;
+        margin: 2vw;
         .lh-transition(-webkit-filter 0.3s);
-        
         &.wrong {
-            -webkit-filter: grayscale(1) blur(2px);
-            opacity: 0.7;
+            -webkit-filter: grayscale(1) blur(4px);
+            opacity: 0.8;
         }
     }
-    
     .progress {
         position: fixed;
         bottom: 0;
@@ -65,14 +62,68 @@
         right: 0;
         line-height: 60px;
         font-size: 2rem;
+        width: 80%;
+        max-width: 400px;
+        font-size: 0;
+        margin: 0 auto;
+        &__level {
+            display: inline-block;
+            width: 8%;
+            vertical-align: middle;
+            span {
+                display: block;
+                margin: 0 auto;
+                width: 10px;
+                height: 10px;
+                border-radius: 10px;
+                border: 2px solid #444;
+                background: white;
+                .lh-transition(all, 0.3s);
+            }
+            &--done {
+                span {
+                    background: #444;
+                    border: none;
+                }
+            }
+            &--active {
+                span {
+                    height: 16px;
+                    width: 16px;
+                    border: 6px solid #ff9000;
+                    background: white;
+                }
+            }
+        }
     }
-    
-    .btn {
-        position: absolute;
-        top: 50%;
-        left: 0;
-        right: 0;
-        transform: translateY(-50%);
+}
+
+@media screen and (orientation: portrait) and (min-aspect-ratio: 6/10) {
+    .game {
+        
+        .item {
+            width: 21vw;
+            height: 21vw;
+        }
     }
-    
+}
+
+@media screen and (orientation: portrait) and (min-aspect-ratio:75/100) {
+    .game {
+        
+        .item {
+            width: 20vw;
+            height: 20vw;
+        }
+    }
+}
+
+@media screen and (orientation: landscape) {
+    .game {
+        
+        .item {
+            width: 12vw;
+            height: 12vw;
+        }
+    }
 }

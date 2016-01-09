@@ -160,8 +160,9 @@ body {
   font-family: 'reef';
   text-align: center;
   font-size: 10px;
-  color: black;
+  color: #000;
   overflow: hidden;
+  background: #fff;
 }
 .btn {
   display: inline-block;
@@ -181,8 +182,6 @@ body {
 .btn:hover,
 .btn:active {
   background-color: #1e9feb;
-  border-bottom-width: 0;
-  margin-top: 0.1em;
 }
 canvas {
   width: 100%;
@@ -191,8 +190,7 @@ canvas {
   top: 0;
   left: 0;
   z-index: -1;
-  opacity: 0.9;
-  background: #fff;
+  opacity: 0.5;
 }
 [ui-view] {
   width: 100%;
@@ -233,28 +231,26 @@ canvas {
 }
 .game .header {
   line-height: 40px;
-  font-size: 2rem;
+  font-size: 3rem;
   text-shadow: none;
   background: #FF8000;
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
   color: white;
 }
-.game .header__progress,
+.game .header__pause,
 .game .header__highscore {
   position: absolute;
   top: 0;
   opacity: 0.9;
 }
-.game .header__progress {
-  left: 15px;
-  text-align: left;
-}
-.game .header__time {
-  font-size: 3rem;
+.game .header__pause {
+  right: 15px;
+  text-align: right;
+  color: white;
 }
 .game .header__highscore {
-  text-align: right;
-  right: 15px;
+  text-align: left;
+  left: 15px;
+  font-size: 2.4rem;
 }
 .game .items {
   font-size: 0;
@@ -264,22 +260,22 @@ canvas {
   transform: translateY(-50%);
   left: 0;
   right: 0;
+  padding: 2vw;
 }
 .game .item {
   display: inline-block;
-  width: 15vh;
-  height: 15vh;
+  width: 28vw;
+  height: 28vw;
   position: relative;
   font-size: 60px;
   background: center center no-repeat;
   background-size: contain;
-  padding: 4px;
-  margin: 2vh;
+  margin: 2vw;
   transition: -webkit--webkit-filter 0.3s,-webkit--moz-filter 0.3s,-webkit--o-filter 0.3s,-webkit-filter 0.3s;
 }
 .game .item.wrong {
-  -webkit-filter: grayscale(1) blur(2px);
-  opacity: 0.7;
+  -webkit-filter: grayscale(1) blur(4px);
+  opacity: 0.8;
 }
 .game .progress {
   position: fixed;
@@ -288,12 +284,78 @@ canvas {
   right: 0;
   line-height: 60px;
   font-size: 2rem;
+  width: 80%;
+  max-width: 400px;
+  font-size: 0;
+  margin: 0 auto;
 }
-.game .btn {
+.game .progress__level {
+  display: inline-block;
+  width: 8%;
+  vertical-align: middle;
+}
+.game .progress__level span {
+  display: block;
+  margin: 0 auto;
+  width: 10px;
+  height: 10px;
+  border-radius: 10px;
+  border: 2px solid #444;
+  background: white;
+  transition: all 0.3s;
+}
+.game .progress__level--done span {
+  background: #444;
+  border: none;
+}
+.game .progress__level--active span {
+  height: 16px;
+  width: 16px;
+  border: 6px solid #ff9000;
+  background: white;
+}
+@media screen and (orientation: portrait) and (min-aspect-ratio: 6/10) {
+  .game .item {
+    width: 21vw;
+    height: 21vw;
+  }
+}
+@media screen and (orientation: portrait) and (min-aspect-ratio: 75/100) {
+  .game .item {
+    width: 20vw;
+    height: 20vw;
+  }
+}
+@media screen and (orientation: landscape) {
+  .game .item {
+    width: 12vw;
+    height: 12vw;
+  }
+}
+.complete {
   position: absolute;
   top: 50%;
   left: 0;
   right: 0;
   -webkit-transform: translateY(-50%);
   transform: translateY(-50%);
+}
+.complete .time {
+  font-size: 6rem;
+  margin-bottom: 0.25em;
+}
+.complete .record {
+  font-size: 3rem;
+  margin-bottom: 1em;
+  color: #ff9000;
+}
+.complete .record span {
+  display: inline-block;
+  position: relative;
+}
+.complete .record span:before {
+  position: absolute;
+  left: -1.1em;
+  font-family: FontAwesome;
+  content: "\f091";
 }
