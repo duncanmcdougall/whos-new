@@ -102,9 +102,15 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
 
     $scope.pause = function () {
         $interval.cancel(timerInterval);
+        $scope.paused = true;
     }
 
     $scope.unpause = function () {
         startTimer();
+        $scope.paused = false;
+    }
+    
+    $scope.restart = function() {
+        $state.go("countdown");
     }
 });

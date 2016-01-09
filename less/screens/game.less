@@ -12,24 +12,22 @@
         background: #FF8000;
         //box-shadow: 0 0 10px rgba(0,0,0,0.3);
         color: white;
-    }
-    .header__pause,
-    .header__highscore {
-        position: absolute;
-        top: 0;
-        opacity: 0.9;
-    }
-    .header__pause {
-        right: 15px;
-        text-align: right;
-        color: white;
-    }
-    .header__time {
-    }
-    .header__highscore {
-        text-align: left;
-        left: 15px;
-        font-size: 2.4rem;
+        &__pause,
+        &__highscore {
+            position: absolute;
+            top: 0;
+            opacity: 0.9;
+        }
+        &__pause {
+            right: 15px;
+            text-align: right;
+            color: white;
+        }
+        &__highscore {
+            text-align: left;
+            left: 15px;
+            font-size: 2.4rem;
+        }
     }
     .items {
         font-size: 0;
@@ -96,34 +94,43 @@
             }
         }
     }
+    .pause-menu {
+
+        &__title {
+            font-size: 5rem;
+            //margin-bottom: 2rem;
+            padding-top: 0.75em;
+        }
+        &__buttons {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            left: 0;
+            right: 0;
+        }
+        .btn {
+            margin: 0 auto 2rem;
+        }
+    }
 }
 
 @media screen and (orientation: portrait) and (min-aspect-ratio: 6/10) {
-    .game {
-        
-        .item {
-            width: 21vw;
-            height: 21vw;
-        }
+    .game .item {
+        width: 21vw;
+        height: 21vw;
     }
 }
 
 @media screen and (orientation: portrait) and (min-aspect-ratio:75/100) {
-    .game {
-        
-        .item {
-            width: 20vw;
-            height: 20vw;
-        }
+    .game .item {
+        width: 20vw;
+        height: 20vw;
     }
 }
 
 @media screen and (orientation: landscape) {
-    .game {
-        
-        .item {
-            width: 12vw;
-            height: 12vw;
-        }
+    .game .item {
+        width: 12vw;
+        height: 12vw;
     }
 }
