@@ -1,0 +1,18 @@
+<div class="game">
+    <header class="header">
+        
+        <span class="header__highscore" ng-show="highscore !== null"><i class="fa fa-trophy"></i> {{highscore | numberFixedLen:1 }}s</span>
+        <span class="header__time">{{time | numberFixedLen:1 }}s</span>
+        <span class="header__pause"></span>
+    </header>
+    <ul class="items" ng-hide="done">
+        <li class="item" ng-class='{"new" : item.isNew, "wrong" : item.isWrong }' ng-repeat="item in items" ng-click="chance(item)" style='background-image: url("{{item.src}}")' >
+            
+        </li>
+    </ul>
+    <div class="progress">
+        {{level}}/{{totalLevels}}
+    </div>
+    
+    <a href="#" class="btn" ui-sref="countdown" ng-hide="!done">Play Again?</a>
+</div>

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app" >
+<head>
+    <meta charset="UTF-8">
+    <meta id="extViewportMeta" name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-touch-fullscreen" content="yes">
+    <meta name="mobile-web-app-capable" content="yes">
+    <link rel="manifest" href="/manifest.json">
+    <title>What's New?</title>
+    <link rel="stylesheet" href="/assets/css/app.css">
+    <script src="/bower_components/randomcolor/randomColor.js"></script>
+    <script src="/bower_components/angular/angular.min.js"></script>
+    <script src="/bower_components/angular-touch/angular-touch.min.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+    <script src="/bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+    <script src="/bower_components/underscore/underscore-min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.4/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/ocanvas/2.8.1/ocanvas.min.js"></script>
+    <script src="/assets/js/app.js"></script>
+    <script src="/assets/js/filters.js"></script>
+    <script src="/assets/js/highscoreservice.js"></script>
+    <script src="/assets/js/countdowncontroller.js"></script>
+    <script src="/assets/js/gamecontroller.js"></script>
+</head>
+
+<body>
+<div ui-view></div>
+<canvas id="canvas"></canvas>
+</body>
+
+</html>

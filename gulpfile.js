@@ -9,28 +9,17 @@ var argv = require('yargs').argv;
 var autoprefixer = require('gulp-autoprefixer');
 var manifest = require('gulp-manifest');
 var zip = require('gulp-zip');
+var livereload = require('gulp-livereload');
 
 gulp.task('connect', function () {
   connect.server({
-    root: 'app/',
-    port: 8889
+    port: 8888
   });
 });
 
-gulp.task('manifest', function(){
-  gulp.src(['build/**/*'], { base: './build/' })
-    .pipe(manifest({
-      hash: true,
-      preferOnline: true,
-      network: ['*'],
-      filename: 'app.manifest',
-      exclude: 'app.manifest'
-     }))
-    .pipe(gulp.dest('build'));
-});
 
 gulp.task('less', function () {
-  gulp.src('app/less/app.less')
+  gulp.src('less/app.less')
     .pipe(less({
       paths: [ path.join(__dirname, 'less', 'includes') ]
     }))
@@ -38,30 +27,14 @@ gulp.task('less', function () {
             browsers: ['last 2 versions'],
             cascade: false
     }))
-    .pipe(gulp.dest('app/assets/css'));
+    .pipe(gulp.dest('assets/css'))
+    .pipe(livereload());;
 });
 
 // Watch Files For Changes
 gulp.task('watch', function() {
-    gulp.watch('app/**/*.less',['less']);
-});
-
-gulp.task('clean', function() {
-    gulp.src('build/**')
-      .pipe(clean({force: false}));
-});
-
-gulp.task('copy-files', function() {
-    gulp.src('./app/assets/**/*')
-        .pipe(gulp.dest('build/assets/'));
-    gulp.src('./app/*.html')
-        .pipe(gulp.dest('build'));
-});
-
-gulp.task('build', ['less', 'copy-files', 'manifest', 'connect'], function() {
-    gulp.src('build/**/*')
-        .pipe(zip('build.zip'))
-        .pipe(gulp.dest('./'));
+    livereload.listen();
+    gulp.watch('**/*.less',['less']);
 });
 
 // Default Task

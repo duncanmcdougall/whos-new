@@ -1,0 +1,78 @@
+.game {
+    height: 100%;
+    color: black;
+    
+    .header, .progress {
+        line-height: 40px;
+    }
+    
+    .header {
+        line-height: 40px;
+       font-size: 2rem;
+        text-shadow: none;
+        background: #FF8000;
+        box-shadow: 0 0 10px rgba(0,0,0,0.3);
+        color: white;
+    }
+    .header__progress,
+    .header__highscore {
+        position: absolute;
+        top: 0;
+        opacity: 0.9;
+    }
+    .header__progress {
+        left: 15px;
+        text-align: left;
+    }
+    .header__time {
+        font-size: 3rem;
+    }
+    .header__highscore {
+        text-align: right;
+        right: 15px;
+    }
+    .items {
+        font-size: 0;
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+        right: 0;
+        
+    }
+    .item {
+        display: inline-block;
+        width: 15vh;
+        height: 15vh;
+        position: relative;
+        font-size: 60px;
+        background: center center no-repeat;
+        background-size: contain;
+        padding: 4px;
+        margin: 2vh;
+        .lh-transition(-webkit-filter 0.3s);
+        
+        &.wrong {
+            -webkit-filter: grayscale(1) blur(2px);
+            opacity: 0.7;
+        }
+    }
+    
+    .progress {
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        line-height: 60px;
+        font-size: 2rem;
+    }
+    
+    .btn {
+        position: absolute;
+        top: 50%;
+        left: 0;
+        right: 0;
+        transform: translateY(-50%);
+    }
+    
+}
