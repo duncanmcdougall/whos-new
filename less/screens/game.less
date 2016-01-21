@@ -47,7 +47,8 @@
         background: center center no-repeat;
         background-size: contain;
         margin: 2vw;
-        .lh-transition(-webkit-filter 0.3s);
+        .lh-transition(~"-webkit-filter 0.3s");
+        transform: translateZ(0);
         &.wrong {
             -webkit-filter: grayscale(1) blur(4px);
             opacity: 0.8;
@@ -95,7 +96,6 @@
         }
     }
     .pause-menu {
-
         &__title {
             font-size: 5rem;
             //margin-bottom: 2rem;

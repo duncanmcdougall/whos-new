@@ -275,6 +275,8 @@ canvas {
   background-size: contain;
   margin: 2vw;
   transition: -webkit--webkit-filter 0.3s,-webkit--moz-filter 0.3s,-webkit--o-filter 0.3s,-webkit-filter 0.3s;
+  -webkit-transform: translateZ(0);
+  transform: translateZ(0);
 }
 .game .item.wrong {
   -webkit-filter: grayscale(1) blur(4px);

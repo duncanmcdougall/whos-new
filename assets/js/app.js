@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router', 'LocalStorageModule', 'ngTouch']);
+var app = angular.module('app', ['ui.router', 'LocalStorageModule', 'ngTouch', 'ngAudio']);
 
 
 app.config(function ($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
@@ -10,8 +10,6 @@ app.config(function ($stateProvider, $urlRouterProvider, localStorageServiceProv
     localStorageServiceProvider
         .setPrefix('whatsnew');
 
-
-    //
     // Now set up the states
     $stateProvider
         .state('home', {
@@ -29,73 +27,18 @@ app.config(function ($stateProvider, $urlRouterProvider, localStorageServiceProv
         .state('complete', {
             templateUrl: 'assets/templates/complete.html',
             controller: 'CompleteController',
-            params: { time: null, isNewRecord: false }
-        });
-});
-
-$.preloadImages = function(images) {
-  for (var i = 0; i < images.length; i++) {
-    $("<img />").attr("src", images[i]);
-  }
-}
-
-
-$(function () {
-    var windowXArray = [],
-        windowYArray = [];
-
-    for (var i = 0; i < $(window).innerWidth(); i++) {
-        windowXArray.push(i);
-    }
-
-    for (var i = 0; i < $(window).innerHeight(); i++) {
-        windowYArray.push(i);
-    }
-
-    function randomPlacement(array) {
-        var placement = array[Math.floor(Math.random() * array.length)];
-        return placement;
-    }
-
-
-    var canvas = oCanvas.create({
-        canvas: '#canvas',
-        fps: 60
-    });
-
-    setInterval(function () {
-
-        var rectangle = canvas.display.ellipse({
-            x: randomPlacement(windowXArray),
-            y: randomPlacement(windowYArray),
-            origin: {
-                x: 'center',
-                y: 'center'
-            },
-            radius: 0,
-            fill: randomColor(),
-            opacity: 1
-        });
-
-        canvas.addChild(rectangle);
-
-        rectangle.animate({
-            radius: 10,
-            opacity: 0
-        }, {
-            duration: '1000',
-            easing: 'linear',
-            callback: function () {
-                this.remove();
+            params: {
+                time: null,
+                isNewRecord: false
             }
         });
-
-    }, 100);
-
-    $(window).resize(function () {
-        canvas.width = $(window).innerWidth();
-        canvas.height = $(window).innerHeight();
-    });
-
-    $(window).resize();
 });
+
+function PreLoadImages(preloadedImages,srcs) {
+    for (var i = 0; i < srcs.length; i++) {
+        var image = new Image();
+        image.src = srcs[i];
+        preloadedImages.push(image);
+
+    }
+};

@@ -11,7 +11,7 @@
         </span>
     </header>
     <ul class="items" ng-hide="paused">
-        <li class="item pulse animated" ng-class='{"new" : item.isNew, "wrong" : item.isWrong }' ng-repeat="item in items" ng-click="chance(item)" style='background-image: url("{{item.src}}")'>
+        <li class="item" ng-class='{"new" : item.isNew, "wrong" : item.isWrong }' ng-repeat="item in items" ng-click="chance(item)" style='background-image: url("{{item.src}}")'>
 
         </li>
     </ul>

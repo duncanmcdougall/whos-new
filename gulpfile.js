@@ -17,6 +17,23 @@ gulp.task('connect', function () {
   });
 });
 
+gulp.task("copy", function () {
+    var bower = {
+        randomColor: "randomcolor/randomColor.js",
+        angular: "angular/angular.min.js",
+        angularTouch: "angular-touch/angular-touch.min.js",
+        angularUiRouter: "angular-ui-router/release/angular-ui-router.min.js",
+        angularLocalStorage: "angular-local-storage/dist/angular-local-storage.min.js",
+        underscore: "underscore/underscore-min.js",
+        angularAudio: "angular-audio/app/angular.audio.js"
+    };
+ 
+    for (var resource in bower) {
+        gulp.src("bower_components/" + bower[resource])
+          .pipe(gulp.dest('assets/js/libs/'));
+    }
+});
+
 
 gulp.task('less', function () {
   gulp.src('less/app.less')
@@ -38,4 +55,4 @@ gulp.task('watch', function() {
 });
 
 // Default Task
-gulp.task('default', ['less', 'watch', 'connect']);
+gulp.task('default', ['copy', 'less', 'watch', 'connect']);

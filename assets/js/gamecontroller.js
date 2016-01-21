@@ -18,10 +18,14 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
         {
             name: 'sea',
             items: 20
+        },
+        {
+            name: 'animals',
+            items: 24
         }
     ];
 
-    var pack = packs[0];
+    var pack = packs[2];
 
     var startTimer = function () {
         timerInterval = $interval(function () {
@@ -56,8 +60,8 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
         for (var j = 1; j <= pack.items; j++) {
             allItems.push("/assets/icons/" + pack.name + "/icon (" + j + ").png");
         }
-
-        $.preloadImages(allItems);
+        var preloadedImages = new Array();
+        PreLoadImages(preloadedImages, allItems);
 
         allItems = _.shuffle(allItems);
 

@@ -29,6 +29,8 @@
     "angular-touch": "~1.4.7"
   },
   "devDependencies": {
-    "randomcolor": "~0.4.0"
+    "randomcolor": "~0.4.0",
+    "font-awesome": "fontawesome#~4.5.0",
+    "angular-audio": "~1.7.1"
   }
 }
