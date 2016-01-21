@@ -58,7 +58,7 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
     var setupGame = function () {
         allItems = [];
         for (var j = 1; j <= pack.items; j++) {
-            allItems.push("/assets/icons/" + pack.name + "/icon (" + j + ").png");
+            allItems.push("/icons/" + pack.name + "/icon (" + j + ").png");
         }
         var preloadedImages = new Array();
         PreLoadImages(preloadedImages, allItems);
