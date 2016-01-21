@@ -1,6 +1,6 @@
-app.controller('GameController', function ($scope, $interval, $timeout, $state, HighscoreService) {
+app.controller('GameController', function ($scope, $interval, $timeout, $state, HighscoreService, PackService) {
 
-    var allItems, timerInterval;
+    var allItems, timerInterval, pack;
 
     $scope.totalLevels = 12;
     $scope.record = HighscoreService.getHighscore();
@@ -9,23 +9,6 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
     $scope.started = false;
     $scope.countdown = 3;
     $scope.levels = [];
-
-    var packs = [
-        {
-            name: 'food',
-            items: 20
-        },
-        {
-            name: 'sea',
-            items: 20
-        },
-        {
-            name: 'animals',
-            items: 24
-        }
-    ];
-
-    var pack = packs[2];
 
     var startTimer = function () {
         timerInterval = $interval(function () {
@@ -56,12 +39,11 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
     };
 
     var setupGame = function () {
+        pack = PackService.getPack();
         allItems = [];
         for (var j = 1; j <= pack.items; j++) {
             allItems.push("/icons/" + pack.name + "/icon (" + j + ").png");
         }
-        var preloadedImages = new Array();
-        PreLoadImages(preloadedImages, allItems);
 
         allItems = _.shuffle(allItems);
 

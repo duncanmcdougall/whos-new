@@ -9,9 +9,7 @@
         line-height: 40px;
         font-size: 3rem;
         text-shadow: none;
-        background: #FF8000;
-        //box-shadow: 0 0 10px rgba(0,0,0,0.3);
-        color: white;
+        color: @color1;
         &__pause,
         &__highscore {
             position: absolute;
@@ -21,7 +19,10 @@
         &__pause {
             right: 15px;
             text-align: right;
-            color: white;
+            
+            &:hover, &:focus {
+                color: @color2;
+            }
         }
         &__highscore {
             text-align: left;
@@ -89,7 +90,7 @@
                 span {
                     height: 16px;
                     width: 16px;
-                    border: 6px solid #ff9000;
+                    border: 6px solid @color1;
                     background: white;
                 }
             }
@@ -98,7 +99,6 @@
     .pause-menu {
         &__title {
             font-size: 5rem;
-            //margin-bottom: 2rem;
             padding-top: 0.75em;
         }
         &__buttons {

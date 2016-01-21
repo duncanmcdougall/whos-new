@@ -33,12 +33,3 @@ app.config(function ($stateProvider, $urlRouterProvider, localStorageServiceProv
             }
         });
 });
-
-function PreLoadImages(preloadedImages,srcs) {
-    for (var i = 0; i < srcs.length; i++) {
-        var image = new Image();
-        image.src = srcs[i];
-        preloadedImages.push(image);
-
-    }
-};
