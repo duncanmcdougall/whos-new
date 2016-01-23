@@ -16,6 +16,7 @@ gulp.task('connect', function () {
     connect.server({
         port: 8888,
         root: 'build',
+        debug: true
     });
 });
 
@@ -52,6 +53,7 @@ gulp.task("copy:assets", function () {
     gulp.src(['src/templates/**/*']).pipe(gulp.dest('build/templates/'));
     gulp.src(['src/js/**/*']).pipe(gulp.dest('build/js/'));
     gulp.src(['src/index.html']).pipe(gulp.dest('build/'));
+    gulp.src(['src/logos/**/*']).pipe(gulp.dest('build/'));
 });
 
 gulp.task('less', function () {
