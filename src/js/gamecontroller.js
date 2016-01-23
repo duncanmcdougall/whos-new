@@ -42,7 +42,7 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
         pack = PackService.getPack();
         allItems = [];
         for (var j = 1; j <= pack.items; j++) {
-            allItems.push("/icons/" + pack.name + "/icon (" + j + ").png");
+            allItems.push("icons/" + pack.name + "/icon (" + j + ").png");
         }
 
         allItems = _.shuffle(allItems);

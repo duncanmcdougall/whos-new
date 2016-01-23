@@ -14,18 +14,21 @@ app.config(function ($stateProvider, $urlRouterProvider, localStorageServiceProv
     $stateProvider
         .state('home', {
             url: "/",
-            templateUrl: "/templates/home.html"
+            templateUrl: "templates/home.html",
+            controller: function ($scope, PackService) {
+                PackService.PreloadImages();
+            }
         })
         .state('countdown', {
-            templateUrl: '/templates/countdown.html',
+            templateUrl: 'templates/countdown.html',
             controller: 'CountdownController'
         })
         .state('game', {
-            templateUrl: '/templates/game.html',
+            templateUrl: 'templates/game.html',
             controller: 'GameController'
         })
         .state('complete', {
-            templateUrl: '/templates/complete.html',
+            templateUrl: 'templates/complete.html',
             controller: 'CompleteController',
             params: {
                 time: null,

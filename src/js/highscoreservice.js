@@ -24,36 +24,26 @@ app.factory('PackService', function () {
 
     var packs = [
         {
-            name: 'food',
-            items: 20
-        },
-        {
-            name: 'sea',
-            items: 20
-        },
-        {
             name: 'animals',
             items: 24
         }
     ];
     
 
-    var preloadImages = function () {
-        var images = new Array();
+    service.PreloadImages = function () {
+        images = new Array();
         for(var i = 0; i < packs.length; i++) {
             for(var j = 1; j <= packs[i].items; j++) {
-                var src = "/icons/" + packs[i].name + "/icon (" + j + ").png";
+                var src = "icons/" + packs[i].name + "/icon (" + j + ").png";
                 var image = new Image();
                 image.src = src;
                 images.push(image);
             }
         }
     };
-    
-    preloadImages();
 
     service.getPack = function () {
-        var packIdx = _.random(0, 2);
+        var packIdx = _.random(0, packs.length-1);
         var pack = packs[packIdx];
         return pack;
     };
