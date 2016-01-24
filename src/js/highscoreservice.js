@@ -28,7 +28,6 @@ app.factory('PackService', function () {
             items: 24
         }
     ];
-    
 
     service.PreloadImages = function () {
         images = new Array();

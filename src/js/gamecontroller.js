@@ -2,7 +2,8 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
 
     var allItems, timerInterval, pack;
 
-    $scope.totalLevels = 12;
+    $scope.totalItems = 12;
+    $scope.totalLevels = 10;
     $scope.record = HighscoreService.getHighscore();
     $scope.level = 1;
     $scope.time = 0;
@@ -25,7 +26,7 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
         });
 
         var wrongs = allItems.slice(0, $scope.level);
-        for (var i = 0; i < $scope.totalLevels - 1; i++) {
+        for (var i = 0; i < $scope.totalItems - 1; i++) {
             var idx = _.random(0, $scope.level - 1);
             items.push({
                 src: wrongs[idx],
