@@ -1,11 +1,10 @@
 var app = angular.module('app', ['ui.router', 'LocalStorageModule', 'ngTouch', 'ngAudio']);
-
+document.ontouchmove = function(e) {e.preventDefault()};
 
 app.config(function ($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
     //
     // For any unmatched url, redirect to /state1
     $urlRouterProvider.otherwise("/");
-
 
     localStorageServiceProvider
         .setPrefix('whatsnew');

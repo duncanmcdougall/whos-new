@@ -10,7 +10,7 @@
         </a>
         </span>
     </header>
-    <ul class="items" ng-hide="paused">
+    <ul class="items items--{{mode}}" ng-hide="paused">
         <li class="item" ng-class='{"new" : item.isNew, "wrong" : item.isWrong }' ng-repeat="item in items" ng-click="chance(item)" style='background-image: url("{{item.src}}")'>
 
         </li>
