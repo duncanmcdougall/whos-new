@@ -1,3 +1,34 @@
+function Stopwatch () {
+  this.reset()
+}
+
+Stopwatch.prototype.start = function () {
+  if (this.pausedAt != null) {
+    this.paused += Date.now() - this.pausedAt
+    this.pausedAt = null
+  }
+}
+
+Stopwatch.prototype.pause = function () {
+  if (!this.pausedAt) this.pausedAt = Date.now()
+}
+
+Stopwatch.prototype.reset = function () {
+  var now = Date.now()
+  this.startedAt = now
+  this.pausedAt = now
+  this.paused = 0
+}
+
+Stopwatch.prototype.ticks = function () {
+  var now = this.pausedAt || Date.now()
+  return (now - this.startedAt) - this.paused
+}
+
+Stopwatch.prototype.formatted = function () {
+  return new Date(this.ticks()).getTime() / 1000;
+}
+
 app.controller('GameController', function ($scope, $interval, $timeout, $state, HighscoreService, PackService) {
 
     var allItems, timerInterval;
@@ -10,12 +41,13 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
     $scope.started = false;
     $scope.countdown = 3;
     $scope.levels = [];
+    var timer;
     
-
-
     var startTimer = function () {
+        timer = new Stopwatch();
+        timer.start();
         timerInterval = $interval(function () {
-            $scope.time += 0.1;
+            $scope.time = timer.formatted();
         }, 100);
     };
 
@@ -85,12 +117,12 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
     };
 
     $scope.pause = function () {
-        $interval.cancel(timerInterval);
+        timer.pause();
         $scope.paused = true;
     }
 
     $scope.unpause = function () {
-        startTimer();
+        timer.start();
         $scope.paused = false;
     }
     
