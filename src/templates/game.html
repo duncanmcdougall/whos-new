@@ -7,11 +7,10 @@
         <span class="header__time">{{time | numberFixedLen:1 }}s</span>
         <span class="header__pause" ng-click="pause()">
             <i class="fa fa-pause-circle"></i>
-        </a>
         </span>
     </header>
     <ul class="items items--{{mode}}" ng-hide="paused">
-        <li class="item" ng-class='{"new" : item.isNew, "wrong" : item.isWrong }' ng-repeat="item in items" ng-click="chance(item)" style='background-image: url("{{item.src}}")'>
+        <li class="item" ng-class='{"new" : item.isNew, "wrong animated shake" : item.isWrong, "notRevealed" : !revealed }' ng-repeat="item in items" ng-click="chance(item)" style='background-image: url("{{item.src}}")'>
 
         </li>
     </ul>

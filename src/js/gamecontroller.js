@@ -48,7 +48,7 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
         timer.start();
         timerInterval = $interval(function () {
             $scope.time = timer.formatted();
-        }, 100);
+        }, 150);
     };
 
     var generateLevel = function () {

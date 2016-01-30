@@ -8,7 +8,6 @@
 * {
     -webkit-touch-callout: none;
     -webkit-user-select: none;
-
 }
 
 body,
@@ -24,15 +23,15 @@ body {
     font-family: 'reef';
     text-align: center;
     font-size: 10px;
-    color: #000;
+    color: #fff;
     overflow: hidden;
-    background: #fff;
+    background: #4CAF50;
 }
 
 .btn {
     display: inline-block;
     background: @color1;
-    color: #fff;
+    color: black;
     font-size: 4em;
     padding: 0.4em 1em;
     text-decoration: none;
@@ -43,10 +42,6 @@ body {
     position: relative;
     margin: 0 auto;
     max-width: 80%;
-    
-    &:hover, &:active {
-        background-color: @color2;
-    }
 }
 
 canvas {
@@ -66,4 +61,32 @@ canvas {
 
 [ng-click] {
     cursor: pointer;
+}
+
+@-webkit-keyframes huer {
+    0% {
+        -webkit-filter: hue-rotate(0deg);
+    }
+    50% {
+        -webkit-filter: hue-rotate(180deg);
+    }
+    100% {
+        -webkit-filter: hue-rotate(0deg);
+    }
+}
+
+#block-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: #EC407A;
+    animation: huer 20s infinite;
+}
+
+.block {
+    width: 10vw;
+    height: 10vw;
+    float: left;
+    transition: background 6s;
 }

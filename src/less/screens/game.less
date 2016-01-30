@@ -1,6 +1,7 @@
 .game {
     height: 100%;
-    color: black;
+    perspective: 1000;
+    
     .header,
     .progress {
         line-height: 40px;
@@ -9,7 +10,9 @@
         line-height: 40px;
         font-size: 3rem;
         text-shadow: none;
-        color: @color1;
+        color: black;
+        background: white;
+        
         &__pause,
         &__highscore {
             position: absolute;
@@ -44,17 +47,23 @@
         width: 28vw;
         height: 28vw;
         position: relative;
-        font-size: 60px;
-        background: center center no-repeat;
-        background-size: contain;
         margin: 2vw;
-        .lh-transition(~"-webkit-filter 0.3s");
         transform: translateZ(0);
+        .lh-transition(~"all 0.2s");
+        background: white;
+        border-radius: 10px;
+        transform-style: preserve-3d;
+        background: center center no-repeat white;
+        background-size: contain;
+        border: 10px solid white;
+        box-shadow: 0 0 20px rgba(0,0,0,0.4);
+        
         &.wrong {
-            -webkit-filter: grayscale(1) blur(4px);
-            opacity: 0.8;
+            -webkit-filter: grayscale(1);
+            transform: scale(0.7);
         }
     }
+    
     .progress {
         position: fixed;
         bottom: 0;
