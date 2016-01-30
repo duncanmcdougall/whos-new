@@ -1,4 +1,4 @@
-# whats-new
+# Who's New?
 
 A mobile game where the goal is to find what item is new as fast as possible.
 
