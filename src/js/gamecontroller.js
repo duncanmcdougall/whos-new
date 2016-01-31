@@ -1,6 +1,6 @@
 app.controller('GameController', function ($scope, $interval, $timeout, $state, HighscoreService, PackService, ngAudio) {
 
-    var allItems, timerInterval, countdownInterval, timer;
+    var timerInterval, countdownInterval, timer;
     $scope.mode = 'easy';
     $scope.totalItems = 12;
     $scope.totalLevels = 8;
@@ -18,13 +18,13 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
         $scope.paused = false;
         $scope.items = [];
 
-        allItems = _.shuffle(PackService.getPack($scope.mode));
+        $scope.allItems = _.shuffle(PackService.getPack($scope.mode));
 
         for (var i = 1; i <= $scope.totalLevels; i++) {
             $scope.levels.push(i);
         }
         
-        $scope.starter = allItems[0];
+        $scope.starter = $scope.allItems[0];
 
         countdownInterval = $interval(function () {
             $scope.countdown--;
@@ -46,12 +46,12 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
     var generateLevel = function () {
         // add the new item to the list
         var items = [{
-            src: allItems[$scope.level],
+            src: $scope.allItems[$scope.level],
             isNew: true
         }];
 
         // fill up the level with items you've already seen
-        var wrongs = allItems.slice(0, $scope.level);
+        var wrongs = $scope.allItems.slice(0, $scope.level);
         for (var i = 0; i < $scope.totalItems - 1; i++) {
             var idx = _.random(0, $scope.level - 1);
             items.push({

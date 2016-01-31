@@ -11,7 +11,7 @@
     </header>
 
     <div class="get-ready">
-        <div class="item item-starter" style='background-image: url("{{starter}}")'>
+        <div class="item item-starter {{starter}}">
 
         </div>
         
@@ -25,6 +25,10 @@
 
         </li>
     </ul>
+    
+    <div class="preloaded">
+        <div class="{{preloadedImage}}" ng-repeat="preloadedImage in allItems" ></div>
+    </div>
 
     <ul class="progress">
         <li class="progress__level" ng-repeat="levelNumber in levels" ng-class="{
