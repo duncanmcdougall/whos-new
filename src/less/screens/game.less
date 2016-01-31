@@ -1,7 +1,6 @@
 .game {
     height: 100%;
     perspective: 1000;
-    
     .header,
     .progress {
         line-height: 40px;
@@ -12,7 +11,7 @@
         text-shadow: none;
         color: black;
         background: white;
-        
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.4);
         &__pause,
         &__highscore {
             position: absolute;
@@ -22,8 +21,8 @@
         &__pause {
             right: 15px;
             text-align: right;
-            
-            &:hover, &:focus {
+            &:hover,
+            &:focus {
                 color: @color2;
             }
         }
@@ -31,6 +30,26 @@
             text-align: left;
             left: 15px;
             font-size: 2.4rem;
+            i {
+                color: #ff9000;
+            }
+        }
+    }
+    .get-ready {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        .countdown {
+            font-size: 6rem;
+            animation-duration: 0.9s;
+            padding: 0.5em;
+            text-shadow: 0 0.05em 0.1em rgba(0, 0, 0, 0.6);
+        }
+    }
+    &--started {
+        .get-ready {
+            display: none;
         }
     }
     .items {
@@ -49,41 +68,22 @@
         position: relative;
         margin: 2vw;
         transform: translateZ(0);
-        .lh-transition(~"all 0.2s");
+        border: 10px solid white;
+        box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+        .lh-transition(~"all 0.2s ease");
         border-radius: 10px;
         transform-style: preserve-3d;
         background-position: center center;
         background-color: white;
         background-repeat: no-repeat;
         background-size: contain;
-        border: 10px solid white;
-        box-shadow: 0 0 20px rgba(0,0,0,0.4);
-        
+
         &.wrong {
             -webkit-filter: grayscale(1);
-            transform: scale(0.7);
+            transform: scale(0.75);
+            box-shadow: none;
         }
     }
-    
-    &--started {
-        .get-ready {
-            display: none;
-        }
-    }
-    
-    .get-ready {
-        position: absolute;
-        top: 50%;
-        transform: translateY(-50%);
-        width: 100%;
-        
-        .countdown {
-            font-size: 6rem;
-            animation-duration: 0.9s;
-            padding: 0.5em;
-        }
-    }
-    
     .progress {
         position: fixed;
         bottom: 0;
@@ -102,25 +102,25 @@
             span {
                 display: block;
                 margin: 0 auto;
-                width: 10px;
-                height: 10px;
+                width: 14px;
+                height: 14px;
                 border-radius: 10px;
-                border: 2px solid #444;
+                border: 4px solid #000;
                 background: white;
                 .lh-transition(all, 0.3s);
             }
             &--done {
                 span {
-                    background: #444;
+                    background: #000;
                     border: none;
                 }
             }
             &--active {
                 span {
-                    height: 16px;
-                    width: 16px;
-                    border: 6px solid @color1;
-                    background: white;
+                    height: 20px;
+                    width: 20px;
+                    border: 5px solid @color1;
+                    background: #000;
                 }
             }
         }

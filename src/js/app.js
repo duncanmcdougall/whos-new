@@ -42,13 +42,15 @@ $(function() {
     ];
     
     function GenerateSquares() {
+        var grid = 5;
+        
         $(".block").remove();
         var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
         var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        var s = w/10;
+        var s = w/grid;
         var hs = h/s;
         
-        var total = 10 * Math.ceil(hs);
+        var total = grid * Math.ceil(hs);
         var container = $("#block-container");
         for(var i = 0; i < total; i++) {
             $('<div class="block">').appendTo(container);
