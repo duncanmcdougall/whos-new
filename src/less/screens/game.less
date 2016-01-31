@@ -65,6 +65,7 @@
         display: inline-block;
         width: 28vw;
         height: 28vw;
+        font-size: 28vw;
         position: relative;
         margin: 2vw;
         transform: translateZ(0);
@@ -79,9 +80,23 @@
         background-size: contain;
 
         &.wrong {
-            -webkit-filter: grayscale(1);
             transform: scale(0.75);
             box-shadow: none;
+            
+            &:after {
+                content: "\f00d";
+                font-family: 'FontAwesome';
+                position: absolute;
+                top: 50%;
+                transform: translateY(-50%);
+                font-size: 0.4em;
+                line-height: 1;
+                left: 0;
+                width: 100%;
+                color: #F44336;
+                text-shadow: 0 0 0.1em rgba(0,0,0,1);
+                display: block;
+            }
         }
     }
     .progress {
