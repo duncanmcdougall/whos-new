@@ -21,7 +21,7 @@
     </div>
 
     <ul class="items items--{{mode}}" ng-hide="paused">
-        <li class="item" ng-class='{"new" : item.isNew, "wrong animated shake" : item.isWrong, "notRevealed" : !revealed }' ng-repeat="item in items" ng-click="chance(item)" style='background-image: url("{{item.src}}")'>
+        <li class="item {{item.src}}" ng-class='{ "new" : item.isNew, "wrong animated shake" : item.isWrong, "notRevealed" : !revealed }' ng-repeat="item in items" ng-click="chance(item)" >
 
         </li>
     </ul>

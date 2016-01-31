@@ -14,25 +14,13 @@ app.factory('PackService', function () {
         }
     ];
 
-    service.PreloadImages = function () {
-        images = new Array();
-        for(var i = 0; i < packs.length; i++) {
-            for(var j = 1; j <= packs[i].items; j++) {
-                var src = "icons/" + packs[i].name + "/" + j + ".png";
-                var image = new Image();
-                image.src = src;
-                images.push(image);
-            }
-        }
-    };
-
     service.getPack = function (level) {
         var packIdx = _.random(0, packs.length-1);
         var pack = packs[packIdx];
         var ids = pack[level];
         var srcs = [];
         for(var i = 0; i < ids.length; i++) {
-            srcs.push("icons/" + pack.name + "/" + ids[i] + ".png");
+            srcs.push(pack.name + "-" + ids[i]);
         }
         return srcs;
     };
