@@ -25,7 +25,7 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
         }
         
         $scope.starter = $scope.allItems[0];
-
+        audio[$scope.countdown].play();
         countdownInterval = $interval(function () {
             $scope.countdown--;
             audio[$scope.countdown].play();
