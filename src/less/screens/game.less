@@ -64,6 +64,25 @@
         }
     }
     
+    &--started {
+        .get-ready {
+            display: none;
+        }
+    }
+    
+    .get-ready {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 100%;
+        
+        .countdown {
+            font-size: 6rem;
+            animation-duration: 0.9s;
+            padding: 0.5em;
+        }
+    }
+    
     .progress {
         position: fixed;
         bottom: 0;

@@ -1,55 +1,47 @@
-function Stopwatch () {
-  this.reset()
-}
+app.controller('GameController', function ($scope, $interval, $timeout, $state, HighscoreService, PackService, ngAudio) {
 
-Stopwatch.prototype.start = function () {
-  if (this.pausedAt != null) {
-    this.paused += Date.now() - this.pausedAt
-    this.pausedAt = null
-  }
-}
-
-Stopwatch.prototype.pause = function () {
-  if (!this.pausedAt) this.pausedAt = Date.now()
-}
-
-Stopwatch.prototype.reset = function () {
-  var now = Date.now()
-  this.startedAt = now
-  this.pausedAt = now
-  this.paused = 0
-}
-
-Stopwatch.prototype.ticks = function () {
-  var now = this.pausedAt || Date.now()
-  return (now - this.startedAt) - this.paused
-}
-
-Stopwatch.prototype.formatted = function () {
-  return new Date(this.ticks()).getTime() / 1000;
-}
-
-app.controller('GameController', function ($scope, $interval, $timeout, $state, HighscoreService, PackService) {
-
-    var allItems, timerInterval;
+    var allItems, timerInterval, countdownInterval, timer;
     $scope.mode = 'easy';
     $scope.totalItems = 12;
     $scope.totalLevels = 8;
-    $scope.record = HighscoreService.getHighscore($scope.mode);
-    $scope.level = 1;
-    $scope.time = 0;
-    $scope.started = false;
-    $scope.countdown = 3;
-    $scope.levels = [];
-    var timer;
-    
-    var startTimer = function () {
-        timer = new Stopwatch();
-        timer.start();
-        timerInterval = $interval(function () {
-            $scope.time = timer.formatted();
-        }, 150);
+
+    var setupGame = function () {
+        $interval.cancel(timerInterval);
+        $interval.cancel(countdownInterval);
+
+        $scope.record = HighscoreService.getHighscore($scope.mode);
+        $scope.level = 1;
+        $scope.time = 0;
+        $scope.started = false;
+        $scope.countdown = 3;
+        $scope.levels = [];
+        $scope.paused = false;
+        $scope.items = [];
+
+        allItems = _.shuffle(PackService.getPack($scope.mode));
+
+        for (var i = 1; i <= $scope.totalLevels; i++) {
+            $scope.levels.push(i);
+        }
+        
+        $scope.starter = allItems[0];
+
+        countdownInterval = $interval(function () {
+            $scope.countdown--;
+            audio[$scope.countdown].play();
+            if ($scope.countdown == 0) {
+                $interval.cancel(countdownInterval);
+                startGame();
+            }
+        }, 900);
     };
+
+    var audio = [
+        ngAudio.load('sounds/go.ogg'),
+        ngAudio.load('sounds/1.ogg'),
+        ngAudio.load('sounds/2.ogg'),
+        ngAudio.load('sounds/3.ogg'),
+    ];
 
     var generateLevel = function () {
         // add the new item to the list
@@ -57,7 +49,7 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
             src: allItems[$scope.level],
             isNew: true
         }];
-        
+
         // fill up the level with items you've already seen
         var wrongs = allItems.slice(0, $scope.level);
         for (var i = 0; i < $scope.totalItems - 1; i++) {
@@ -67,23 +59,22 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
                 isNew: false
             });
         }
-        
+
         // then shuffle them about
         items = _.shuffle(items);
 
         return items;
     };
 
-    var setupGame = function () {
-        allItems = _.shuffle(PackService.getPack($scope.mode));
-
-        for (var i = 1; i <= $scope.totalLevels; i++) {
-            $scope.levels.push(i);
-        }
-        
+    var startGame = function () {
+        $scope.started = true;
         $scope.items = generateLevel();
-        startTimer();
-    };
+        timer = new Stopwatch();
+        timer.start();
+        timerInterval = $interval(function () {
+            $scope.time = timer.formatted();
+        }, 150);
+    }
 
     var gameComplete = function () {
         $interval.cancel(timerInterval);
@@ -98,9 +89,9 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
             time: $scope.time
         });
     };
-    
+
     setupGame();
-    
+
     /* EVENT HANDLERS */
 
     $scope.chance = function (item) {
@@ -125,8 +116,8 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
         timer.start();
         $scope.paused = false;
     }
-    
-    $scope.restart = function() {
-        $state.go("countdown");
+
+    $scope.restart = function () {
+        setupGame();
     }
 });

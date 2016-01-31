@@ -1,4 +1,4 @@
-<div class="game">
+<div class="game" ng-class='{ "game--started" : started }'>
     <header class="header">
 
         <span class="header__highscore" ng-show="!!record">
@@ -9,6 +9,17 @@
             <i class="fa fa-pause-circle"></i>
         </span>
     </header>
+
+    <div class="get-ready">
+        <div class="item item-starter" style='background-image: url("{{starter}}")'>
+
+        </div>
+        
+        <div class="countdown bounceIn animated">
+            {{countdown}}
+        </div>
+    </div>
+
     <ul class="items items--{{mode}}" ng-hide="paused">
         <li class="item" ng-class='{"new" : item.isNew, "wrong animated shake" : item.isWrong, "notRevealed" : !revealed }' ng-repeat="item in items" ng-click="chance(item)" style='background-image: url("{{item.src}}")'>
 

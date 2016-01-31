@@ -18,10 +18,6 @@ app.config(function ($stateProvider, $urlRouterProvider, localStorageServiceProv
                 PackService.PreloadImages();
             }
         })
-        .state('countdown', {
-            templateUrl: 'templates/countdown.html',
-            controller: 'CountdownController'
-        })
         .state('game', {
             templateUrl: 'templates/game.html',
             controller: 'GameController'

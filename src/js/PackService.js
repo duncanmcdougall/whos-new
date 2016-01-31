@@ -33,7 +33,6 @@ app.factory('PackService', function () {
         var srcs = [];
         for(var i = 0; i < ids.length; i++) {
             srcs.push("icons/" + pack.name + "/" + ids[i] + ".png");
-            console.log(ids[i]);
         }
         return srcs;
     };
