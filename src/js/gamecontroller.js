@@ -1,4 +1,4 @@
-app.controller('GameController', function ($scope, $interval, $timeout, $state, HighscoreService, PackService, ngAudio) {
+app.controller('GameController', function ($scope, $interval, $timeout, $state, HighscoreService, PackService) {
 
     var timerInterval, countdownInterval, timer;
     $scope.mode = 'easy';
@@ -23,25 +23,16 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
         for (var i = 1; i <= $scope.totalLevels; i++) {
             $scope.levels.push(i);
         }
-        
+
         $scope.starter = $scope.allItems[0];
-        audio[$scope.countdown].play();
         countdownInterval = $interval(function () {
             $scope.countdown--;
-            audio[$scope.countdown].play();
             if ($scope.countdown == 0) {
                 $interval.cancel(countdownInterval);
                 startGame();
             }
         }, 900);
     };
-
-    var audio = [
-        ngAudio.load('sounds/go.ogg'),
-        ngAudio.load('sounds/1.ogg'),
-        ngAudio.load('sounds/2.ogg'),
-        ngAudio.load('sounds/3.ogg'),
-    ];
 
     var generateLevel = function () {
         // add the new item to the list

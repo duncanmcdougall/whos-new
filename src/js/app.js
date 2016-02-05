@@ -1,5 +1,7 @@
 var app = angular.module('app', ['ui.router', 'LocalStorageModule', 'ngTouch', 'ngAudio']);
-document.ontouchmove = function(e) {e.preventDefault()};
+document.ontouchmove = function (e) {
+    e.preventDefault()
+};
 
 app.config(function ($stateProvider, $urlRouterProvider, localStorageServiceProvider) {
     //
@@ -13,7 +15,12 @@ app.config(function ($stateProvider, $urlRouterProvider, localStorageServiceProv
     $stateProvider
         .state('home', {
             url: "/",
-            templateUrl: "templates/home.html"
+            templateUrl: "templates/home.html",
+            controller: function () {
+                $(document).ready(function () {
+                    $(".title").lettering();
+                });
+            }
         })
         .state('game', {
             templateUrl: 'templates/game.html',
@@ -30,7 +37,7 @@ app.config(function ($stateProvider, $urlRouterProvider, localStorageServiceProv
 });
 
 
-$(function() {
+$(function () {
     var colors = [
       "#F48FB1",
       "#F06292",
@@ -40,32 +47,32 @@ $(function() {
       "#C2185B",
       "#AD1457",
     ];
-    
+
     function GenerateSquares() {
         var grid = 5;
-        
+
         $(".block").remove();
         var w = Math.max(document.documentElement.clientWidth, window.innerWidth || 0);
         var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
-        var s = w/grid;
-        var hs = h/s;
-        
+        var s = w / grid;
+        var hs = h / s;
+
         var total = grid * Math.ceil(hs);
         var container = $("#block-container");
-        for(var i = 0; i < total; i++) {
+        for (var i = 0; i < total; i++) {
             $('<div class="block">').appendTo(container);
         }
     }
-    
+
     GenerateSquares();
     $(window).on('resize', GenerateSquares);
 
     function changeColor() {
-      $('.block').each(function(idx, item) {
-        var idx = Math.floor(Math.random() * colors.length);
-        var color = colors[idx];
-        $(item).css('backgroundColor', color);
-      });
+        $('.block').each(function (idx, item) {
+            var idx = Math.floor(Math.random() * colors.length);
+            var color = colors[idx];
+            $(item).css('backgroundColor', color);
+        });
     }
     changeColor();
     setInterval(changeColor, 3000);
