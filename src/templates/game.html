@@ -1,6 +1,6 @@
-<div class="game" ng-class='{ "game--started" : started }'>
-    <header class="header" ng-show="started">
+<div class="game" ng-class='{ "game--started" : started }' ng-show="started">
 
+    <header class="header">
         <span class="header__highscore" ng-show="!!record">
             <i class="fa fa-trophy"></i> {{record | numberFixedLen:1 }}s
         </span>
@@ -10,36 +10,13 @@
         </span>
     </header>
 
-    <div class="who-to-do">
-
-    </div>
-
-    <div class="get-ready">
-        <div class="title">
-            Get Ready
-        </div>
-        <div class="description">
-            Find the animal you've not seen before <span class="nowrap">as fast as you can!</span>
-        </div>
-        <div class="center">
-            <div class="item item-starter {{starter}}"></div>
-        </div>
-        <div class="countdown bounceIn animated">
-            {{countdown}}
-        </div>
-    </div>
-
     <ul class="items items--{{mode}}" ng-hide="paused">
         <li class="item {{item.src}}" ng-class='{ "new" : item.isNew, "wrong animated shake" : item.isWrong, "notRevealed" : !revealed }' ng-repeat="item in items" ng-click="chance(item)">
 
         </li>
     </ul>
-
-    <div class="preloaded">
-        <div class="{{preloadedImage}}" ng-repeat="preloadedImage in allItems"></div>
-    </div>
-
-    <ul class="progress">
+    
+    <ul class="progress" ng-hide="paused">
         <li class="progress__level" ng-repeat="levelNumber in levels" ng-class="{
                   'progress__level--done' : levelNumber < level,
                   'progress__level--active' : levelNumber == level,
@@ -48,22 +25,43 @@
         </li>
     </ul>
 
-    <div class="pause-menu" ng-show="paused">
-        <div class="pause-menu__title">
-            <i class="fa fa-pause"></i> PAUSED
-        </div>
-        <div class="pause-menu__buttons">
-            <div>
-                <div class="btn" ng-click="unpause()">
-                    Continue
-                </div>
+</div>
+
+
+<div class="preloaded">
+    <div class="{{preloadedImage}}" ng-repeat="preloadedImage in allItems"></div>
+</div>
+
+<div class="get-ready" ng-show="!started">
+    <div class="title">
+        Get Ready
+    </div>
+    <div class="description">
+        Find the animal you've not seen before <span class="nowrap">as fast as you can!</span>
+    </div>
+    <div class="center">
+        <div class="item item-starter {{starter}}"></div>
+    </div>
+    <div class="countdown bounceIn animated">
+        {{countdown}}
+    </div>
+</div>
+
+
+<div class="pause-menu" ng-show="started && paused">
+    <div class="pause-menu__title">
+        <i class="fa fa-pause"></i> PAUSED
+    </div>
+    <div class="pause-menu__buttons">
+        <div>
+            <div class="btn" ng-click="unpause()">
+                Continue
             </div>
-            <div>
-                <div class="btn" ng-click="restart()">
-                    Restart
-                </div>
+        </div>
+        <div>
+            <div class="btn" ng-click="restart()">
+                Restart
             </div>
         </div>
     </div>
-
 </div>
