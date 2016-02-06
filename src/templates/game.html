@@ -1,8 +1,10 @@
 <div class="game" ng-class='{ "game--started" : started }' ng-show="started">
 
     <header class="header">
-        <span class="header__highscore" ng-show="!!record">
+        <span class="header__highscore">
+           <span ng-show="!!record">
             <i class="fa fa-trophy"></i> {{record | numberFixedLen:1 }}s
+            </span>
         </span>
         <span class="header__time">{{time | numberFixedLen:1 }}s</span>
         <span class="header__pause" ng-click="pause()">
@@ -15,7 +17,7 @@
 
         </li>
     </ul>
-    
+
     <ul class="progress" ng-hide="paused">
         <li class="progress__level" ng-repeat="levelNumber in levels" ng-class="{
                   'progress__level--done' : levelNumber < level,
@@ -64,7 +66,7 @@
             </div>
         </div>
         <div class="btn" ui-sref="home">
-                Main Menu
-            </div>
+            Main Menu
+        </div>
     </div>
 </div>
