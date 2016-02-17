@@ -1,5 +1,5 @@
 {
-  "name": "whats-new",
+  "name": "whos-new",
   "version": "1.0.0",
   "description": "A mobile game where the goal is to find what item is new as fast as possible.",
   "main": "gulpfile.js",
@@ -26,12 +26,12 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/duncanmcdougall/whats-new.git"
+    "url": "git+https://github.com/duncanmcdougall/whos-new.git"
   },
   "author": "Duncan McDougall",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/duncanmcdougall/whats-new/issues"
+    "url": "https://github.com/duncanmcdougall/whos-new/issues"
   },
-  "homepage": "https://github.com/duncanmcdougall/whats-new#readme"
+  "homepage": "https://github.com/duncanmcdougall/whos-new#readme"
 }
