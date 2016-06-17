@@ -35,7 +35,8 @@ gulp.task("copy:bower", function() {
         angularLocalStorage: "angular-local-storage/dist/angular-local-storage.min.js",
         underscore: "underscore/underscore-min.js",
         angularAudio: "angular-audio/app/angular.audio.js",
-        letteringjs: "letteringjs/jquery.lettering.js"
+        letteringjs: "letteringjs/jquery.lettering.js",
+        jquery: "jquery/dist/jquery.min.js"
     };
 
     for (var resource in bower) {

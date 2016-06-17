@@ -30,6 +30,7 @@
     "randomcolor": "~0.4.0",
     "font-awesome": "~4.5.0",
     "angular-audio": "~1.7.1",
-    "letteringjs": "~0.7.0"
+    "letteringjs": "~0.7.0",
+    "jquery": "^3.0.0"
   }
 }
