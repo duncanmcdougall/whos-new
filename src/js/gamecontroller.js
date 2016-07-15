@@ -18,7 +18,7 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
         $scope.paused = false;
         $scope.items = [];
 
-        $scope.allItems = _.shuffle(PackService.getPack($scope.mode));
+        $scope.allItems = utils.shuffle(PackService.getPack($scope.mode));
 
         for (var i = 1; i <= $scope.totalLevels; i++) {
             $scope.levels.push(i);
@@ -44,7 +44,7 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
         // fill up the level with items you've already seen
         var wrongs = $scope.allItems.slice(0, $scope.level);
         for (var i = 0; i < $scope.totalItems - 1; i++) {
-            var idx = _.random(0, $scope.level - 1);
+            var idx = utils.random(0, $scope.level - 1);
             items.push({
                 src: wrongs[idx],
                 isNew: false
@@ -52,7 +52,7 @@ app.controller('GameController', function ($scope, $interval, $timeout, $state, 
         }
 
         // then shuffle them about
-        items = _.shuffle(items);
+        items = utils.shuffle(items);
 
         return items;
     };

@@ -15,7 +15,7 @@ app.factory('PackService', function () {
     ];
 
     service.getPack = function (level) {
-        var packIdx = _.random(0, packs.length-1);
+        var packIdx = utils.random(0, packs.length-1);
         var pack = packs[packIdx];
         var ids = pack[level];
         var srcs = [];

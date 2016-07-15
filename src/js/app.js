@@ -15,12 +15,7 @@ app.config(function ($stateProvider, $urlRouterProvider, localStorageServiceProv
     $stateProvider
         .state('home', {
             url: "/",
-            templateUrl: "templates/home.html",
-            controller: function () {
-                $(document).ready(function () {
-                    $(".title").lettering();
-                });
-            }
+            templateUrl: "templates/home.html"
         })
         .state('game', {
             templateUrl: 'templates/game.html',
@@ -36,11 +31,38 @@ app.config(function ($stateProvider, $urlRouterProvider, localStorageServiceProv
         });
 });
 
+utils = {
+    random : function (min, max) {
+            if (max == null) {
+                max = min;
+                min = 0;
+            }
+            return min + Math.floor(Math.random() * (max - min + 1));
+    },
+    shuffle : function (array) {
+        let counter = array.length;
+
+        // While there are elements in the array
+        while (counter > 0) {
+            // Pick a random index
+            let index = Math.floor(Math.random() * counter);
+
+            // Decrease counter by 1
+            counter--;
+
+            // And swap the last element with it
+            let temp = array[counter];
+            array[counter] = array[index];
+            array[index] = temp;
+        }
+        return array;
+    }
+};
 
 $(function () {
-    
+
     FastClick.attach(document.body);
-    
+
     var colors = [
       "#F48FB1",
       "#F06292",
