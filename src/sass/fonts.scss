@@ -1,0 +1,9 @@
+$font: 'fredoka_oneregular';
+
+@font-face {
+    font-family: $font;
+    src: url('../fonts/fredokaone-regular-webfont.woff2') format('woff2'),
+         url('../fonts/fredokaone-regular-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}

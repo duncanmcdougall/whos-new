@@ -1,4 +1,4 @@
-var app = angular.module('app', ['ui.router', 'LocalStorageModule', 'ngTouch', 'ngAudio']);
+var app = angular.module('app', ['ui.router', 'LocalStorageModule', 'ngAudio']);
 document.ontouchmove = function (e) {
     e.preventDefault()
 };
@@ -38,6 +38,9 @@ app.config(function ($stateProvider, $urlRouterProvider, localStorageServiceProv
 
 
 $(function () {
+    
+    FastClick.attach(document.body);
+    
     var colors = [
       "#F48FB1",
       "#F06292",

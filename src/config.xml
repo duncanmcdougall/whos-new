@@ -1,0 +1,36 @@
+<widget id="io.belter.whosnew" version="0.0.1">
+    <name>Who's New?</name>
+    <description>
+        Find the newest animal as quick as possible
+    </description>
+    <author email="support@belter.io" href="http://www.belter.io">
+        Belter
+    </author>
+    <content src="index.html" />
+    <access origin="*" />
+    <preference name="orientation" value="portrait" />
+    <preference name="target-device" value="handheld" />
+    <preference name="DisallowOverscroll" value="true" />
+    <preference name="detect-data-types" value="false" />
+    <preference name="StatusBarOverlaysWebView" value="false" />
+    <preference name="StatusBarBackgroundColor" value="#000000" />
+    <preference name="StatusBarStyle" value="lightcontent" />
+    <gap:plugin name="com.phonegap.plugin.statusbar" />
+
+    <feature name="StatusBar">
+        <param name="ios-package" value="CDVStatusBar" onload="true" />
+    </feature>
+
+    <!-- iPhone / iPod Touch  -->
+    <icon src="Icon-60.png" platform="ios" width="60" height="60" />
+    <icon src="Icon-60@2x.png" platform="ios" width="120" height="120" />
+    <icon src="Icon-60@3x.png" platform="ios" width="180" height="180" />
+
+    <!-- iPad -->
+    <icon src="Icon-76.png" platform="ios" width="76" height="76" />
+    <icon src="Icon-76@2x.png" platform="ios" width="152" height="152" />
+
+    <!-- Settings Icon -->
+    <icon src="Icon-Small.png" platform="ios" width="29" height="29" />
+    <icon src="Icon-Small@2x.png" platform="ios" width="58" height="58" />
+</widget>

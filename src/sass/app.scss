@@ -1,0 +1,16 @@
+@import "variables.scss";
+@import "../../node_modules/sass-mixins/mixins.scss";
+
+@import "font-awesome.min.css";
+@import "fonts.scss";
+@import "../../node_modules/animate.css/animate.min.css";
+
+@import "reset.scss";
+@import "base.scss";
+@import "pause.scss";
+@import "get-ready.scss";
+@import "icons.scss";
+
+@import "screens/home.scss";
+@import "screens/game.scss";
+@import "screens/complete.scss";
